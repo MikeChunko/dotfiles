@@ -6,4 +6,4 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 URxvt.transparent: true
-URxvt.shading: 20
+URxvt.shading: 50
