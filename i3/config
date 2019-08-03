@@ -50,6 +50,9 @@ bindsym $mod+Shift+q kill
 # screenshot
 bindsym $mod+Shift+p exec maim -u ~/Pictures/Screenshots/$(date +%s).png
 
+# start nautilus
+bindsym $mod+n exec "nautilus --new-window"
+
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show run -config ~/.config/rofi/config
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -203,7 +206,6 @@ bar {
 	}
 }
 
-# bindsym $mod+shift+x exec i3lock
 
 assign [class="Gnome-system-monitor"] $ws1
 assign [class="discord"] $ws1
