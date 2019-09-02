@@ -56,10 +56,7 @@ bindsym $mod+Shift+p exec maim -u ~/Pictures/Screenshots/$(date +%s).png
 bindsym $mod+n exec "nautilus --new-window"
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run -modi window -config ~/.config/rofi/config
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
+bindsym $mod+d exec rofi -show drun -modi window#run -config ~/.config/rofi/config
 
 # change focus
 bindsym $mod+j focus left
