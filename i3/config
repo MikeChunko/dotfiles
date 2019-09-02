@@ -215,9 +215,9 @@ exec gnome-system-monitor
 exec discord
 exec chromium
 
-exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.jpg
-#exec_always feh --bg-scale ~/Pictures/Wallpapers/logs.jpg
-exec_always compton -b --config ~/.config/compton.conf
-exec_always "xinput --set-prop 9 'libinput Accel Speed' -1"
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.jpg
+#exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/logs.jpg
+exec_always --no-startup-id compton -b --config ~/.config/compton.conf
+exec_always --no-startup-id "xinput --set-prop 9 'libinput Accel Speed' -1"
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
