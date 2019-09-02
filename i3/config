@@ -58,6 +58,9 @@ bindsym $mod+n exec "nautilus --new-window"
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show drun -modi window#run -config ~/.config/rofi/config
 
+# lock i3
+bindsym $mod+x exec "i3lockr --blur 50 -- --nofork --ignore-empty-password"
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
