@@ -152,8 +152,10 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bring up a rofi-based power menu
+bindsym $mod+Shift+e exec ~/.config/i3/rofi-logout.sh
+# exit i3 (logs you out of your X session) (default behavior)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -193,34 +195,33 @@ hide_edge_borders both
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-		height 18
-        status_command i3status
-        position top
-        tray_output none
-        font pango:Noto Sans 10
-        colors {
-		background $bg-color
-	    	separator #757575
+#bar {
+#		height 18
+#        status_command i3status
+#        position top
+#        tray_output none
+#        font pango:Noto Sans 10
+#        colors {
+#		background $bg-color
+#	    	separator #757575
 		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
+#		focused_workspace  $bg-color          $bg-color          $text-color
+#		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#	}
+#}
 
 
 assign [class="Gnome-system-monitor"] $ws1
 assign [class="discord"] $ws1
-assign [class="Chromium"] $ws2
 
 exec gnome-system-monitor
 exec discord
-exec chromium
 
+exec_always "polybar -q example"
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.jpg
-#exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/logs.jpg
 exec_always --no-startup-id compton -b --config ~/.config/compton.conf
-exec_always --no-startup-id "xinput --set-prop 9 'libinput Accel Speed' -1"
+exec_always --no-startup-id "xinput --set-prop 9 'libinput Accel Speed' -.9"
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+exec --no-startup-id dunst
