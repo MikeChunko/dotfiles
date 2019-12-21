@@ -46,8 +46,13 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
-# kill focused window
-bindsym $mod+Shift+q kill
+default_orientation vertical
+
+# toggles split for each new window
+for_window [class=".*"] split toggle
+
+# kill current window and toggle split
+bindsym $mod+shift+q split toggle ; kill
 
 # screenshot
 bindsym $mod+Shift+p exec maim -u ~/Pictures/Screenshots/$(date +%s).png
