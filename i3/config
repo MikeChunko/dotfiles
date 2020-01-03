@@ -55,7 +55,11 @@ for_window [class=".*"] split toggle
 bindsym $mod+shift+q split toggle ; kill
 
 # screenshot
-bindsym $mod+Shift+p exec maim -u ~/Pictures/Screenshots/$(date +%s).png
+bindsym $mod+p exec maim -u ~/Pictures/Screenshots/$(date +%F-%S).png
+# screenshot only active window
+bindsym $mod+Control+p exec maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%F-%S).png
+#screenshot area and copy to clipboard
+bindsym $mod+Shift+p exec "maim -s | xclip -selection clipboard -t image/png"
 
 # start nautilus
 bindsym $mod+n exec "nautilus --new-window"
@@ -64,7 +68,7 @@ bindsym $mod+n exec "nautilus --new-window"
 bindsym $mod+d exec rofi -show drun -modi window#run -config ~/.config/rofi/config
 
 # lock i3
-bindsym $mod+x exec "i3lockr --blur 50 -- --nofork --ignore-empty-password"
+bindsym $mod+x exec "i3lockr --blur 100 -- --nofork --ignore-empty-password"
 
 # change focus
 bindsym $mod+j focus left
@@ -230,3 +234,4 @@ exec_always --no-startup-id "xinput --set-prop 9 'libinput Accel Speed' -.9"
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec --no-startup-id dunst
+exec --no-startup-id xset s off -dpms
