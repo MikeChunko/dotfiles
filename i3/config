@@ -220,17 +220,18 @@ hide_edge_borders both
 #	}
 #}
 
-
-assign [class="Gnome-system-monitor"] $ws1
 assign [class="discord"] $ws1
+assign [class="Spotify"] $ws1
+for_window [class="Spotify"] move to workspace $ws1
 
-exec gnome-system-monitor
-exec discord
+exec_always discord
+exec_always "sleep 5 && spotify"
 
-exec_always "polybar -q example"
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.jpg
 exec_always --no-startup-id compton -b --config ~/.config/compton.conf
 exec_always --no-startup-id "xinput --set-prop 9 'libinput Accel Speed' -.9"
+exec_always pkill dunst
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec --no-startup-id dunst
