@@ -34,9 +34,9 @@ padding-right = 3
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = Noto Sans:size=10:antialias=true;1
+font-0 = unifont:fontformat=truetype:size=8:antialias=true;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-2 = FontAwesome:size=10;0
 
 modules-left = i3
 modules-center = spotify
@@ -58,8 +58,10 @@ cursor-scroll = ns-resize
 [module/spotify]
 type = custom/script
 interval = 1
-exec = ~/.config/polybar/scripts/spotify_status.sh %artist% - %title%
-tail = true
+;format-prefix = ""
+format = <label>
+exec = python ~/.config/polybar/scripts/spotify_status.py -f '{play_pause}  {artist} — {song}' -p ',' --playpause-font=2
+format-underline = #001db954
 
 
 [module/xwindow]
@@ -193,7 +195,7 @@ interval = 2
 ;format-prefix = ""
 ;format-background = #191919
 ;format-underline = #FF9A2A92
-label = %percentage:2%%
+label = %percentage:3%%
 
 [module/memory]
 type = internal/memory
@@ -201,7 +203,7 @@ interval = 2
 ;format-prefix = " "
 ;format-background = ${colors.secondary}
 ;format-underline = #FF9A2A92
-label = %percentage_used%%
+label = %percentage_used:3%%
 
 [module/wlan]
 type = internal/network
@@ -260,12 +262,20 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = Vol %percentage%%
+use-ui-max = false
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage:3%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
-label-muted-foreground = #666
+label-muted = muted
+label-muted-foreground = #FFF
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-font = 2
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -360,9 +370,9 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 =  
+ramp-1 =  
+ramp-2 =  
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
