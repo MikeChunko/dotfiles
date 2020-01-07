@@ -55,13 +55,22 @@ bindsym $mod+Control+p exec maim -i $(xdotool getactivewindow) ~/Pictures/Screen
 bindsym $mod+Shift+p exec "maim -s | xclip -selection clipboard -t image/png"
 
 # start nautilus
-bindsym $mod+n exec "nautilus --new-window"
+bindsym $mod+backslash exec "nautilus --new-window"
+
+# start chromium
+bindsym $mod+n exec chromium
+bindsym $mod+Shift+n exec chromium --incognito
 
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show drun -modi window#run -config ~/.config/rofi/config
 
 # lock i3
 bindsym $mod+x exec "i3lockr --blur 100 -- --nofork --ignore-empty-password"
+
+# Media player controls
+bindsym $mod+F1 exec playerctl previous
+bindsym $mod+F2 exec playerctl play-pause
+bindsym $mod+F3 exec playerctl next
 
 # change focus
 bindsym $mod+j focus left
@@ -199,8 +208,8 @@ assign [class="discord"] $ws1
 assign [class="Spotify"] $ws1
 for_window [class="Spotify"] move to workspace $ws1
 
-exec_always discord
-exec_always "sleep 5 && spotify"
+exec discord
+exec "sleep 5 && spotify"
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.jpg
