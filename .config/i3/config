@@ -51,7 +51,7 @@ bindsym $mod+shift+q split toggle ; kill
 # toggle gaps
 bindsym $mod+g mode "gaps"
 mode "gaps" {
-    bindsym 1 mode "default", gaps inner all set 6, exec --no-startup-id bash ~/.config/polybar/launch.sh
+    bindsym 1 mode "default", gaps inner all set 6, exec --no-startup-id compton -b --config ~/.config/compton.conf
     bindsym 2 mode "default", gaps inner all set 0, exec --no-startup-id pkill compton
     bindsym 3 mode "default", gaps inner all set 0
     bindsym Return mode "default"
@@ -62,7 +62,7 @@ mode "gaps" {
 bindsym $mod+Shift+g mode "gpu"
 mode "gpu" {
 	bindsym 1 mode "default", exec optimus-manager --set-startup intel, exec optimus-manager --switch intel --no-confirm
-	bindsym 2 mode "default", exec optimus-manager --set-startup nvidia
+	bindsym 2 mode "default", exec optimus-manager --set-startup hybrid
 	bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -257,9 +257,11 @@ assign [class="discord"] $ws1
 assign [class="Spotify"] $ws1
 for_window [class="Spotify"] move to workspace $ws1
 
+
 exec discord-canary
 exec "sleep 5 && spotify"
 
+exec_always --no-startup-id autorandr -c
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.jpg
 exec_always --no-startup-id compton -b --config ~/.config/compton.conf
@@ -269,7 +271,8 @@ exec_always --no-startup-id "xinput --set-prop 'Laview Technology Mionix Naos 70
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1"
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Natural Scrolling Enabled' 1"
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Disable While Typing Enabled' 0"
-
+#exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' ''
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec --no-startup-id dunst
 exec --no-startup-id xset s off -dpms
+exec --no-startup-id libinput-gestures-setup start
