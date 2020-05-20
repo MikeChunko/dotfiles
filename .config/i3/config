@@ -63,6 +63,7 @@ bindsym $mod+Shift+g mode "gpu"
 mode "gpu" {
 	bindsym 1 mode "default", exec optimus-manager --set-startup intel, exec optimus-manager --switch intel --no-confirm
 	bindsym 2 mode "default", exec optimus-manager --set-startup hybrid
+	bindsym 3 mode "default", exec optimus-manager --set-startup intel
 	bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -216,8 +217,8 @@ bindsym $mod+Shift+e exec bash ~/.config/i3/rofi-logout.sh
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # laptop brightness controls
-bindsym XF86MonBrightnessUp exec "light -A 15"
-bindsym XF86MonBrightnessDown exec "light -U 15"
+bindsym XF86MonBrightnessUp exec "light -A 10"
+bindsym XF86MonBrightnessDown exec "light -U 10"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -253,12 +254,13 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 hide_edge_borders smart
 
+no_focus [class="zoom"]
+
 assign [class="discord"] $ws1
 assign [class="Spotify"] $ws1
 for_window [class="Spotify"] move to workspace $ws1
 
-
-exec discord-canary
+exec "sleep 3 && discord-canary"
 exec "sleep 5 && spotify"
 
 exec_always --no-startup-id autorandr -c
@@ -272,7 +274,9 @@ exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Natural Scrolling Enabled' 1"
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Disable While Typing Enabled' 0"
 #exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' ''
+
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec --no-startup-id dunst
 exec --no-startup-id xset s off -dpms
 exec --no-startup-id libinput-gestures-setup start
+exec_always --no-startup-id fcitx -d
