@@ -6,5 +6,5 @@ Kernel: 5.7-tkg-pds \
 Shell: bash \
 WM: i3-gaps \
 Terminal: gnome-terminal-transparency \
-Compositor: compton-tryone \
+Compositor: picom-tryone \
 Bar: Polybar
