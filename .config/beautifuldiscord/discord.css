@@ -1,0 +1,16 @@
+.theme-dark {
+	--background-primary: rgb(25,25,25);
+	--background-secondary: rgba(30,30,30,1);
+	--background-tertiary: rgba(30,30,30,1);
+	--deprecated-store-bg: rgba(30,30,30,1);
+}
+.theme-dark .modal-yWgWj-, .theme-dark .footer-3rDWdC {
+	background-color: rgba(30, 30, 30, 1);
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+.messages-3amgkR.scroller-2FKFPG::-webkit-scrollbar {
+	display: none;
+}
