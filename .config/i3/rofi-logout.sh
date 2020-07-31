@@ -2,7 +2,7 @@
 
 # Remember to give it exec priviledge, or chmod +x /path/to/rofi-logout.sh
 
-chosen=$(echo -e "Logout\nSuspend\nShutdown\nReboot" | rofi -dmenu -i)
+chosen=$(echo -e "Shutdown\nReboot\nSuspend\nLogout" | rofi -dmenu -i)
 
 if [ $chosen = "Logout" ]; then
 	i3-msg exit
