@@ -8,3 +8,7 @@ WM: i3-gaps \
 Terminal: gnome-terminal-transparency \
 Compositor: picom-tryone \
 Bar: Polybar
+
+<p align="center">
+  <img src="https://github.com/MikeChunko/dotfiles/blob/master/preview.png">
+</p>
