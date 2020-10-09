@@ -41,24 +41,27 @@ for_window [class=".*"] split toggle
 # kill current window and toggle split
 bindsym $mod+shift+q split toggle ; kill
 
+set $mode_def mode default, exec ~/.config/i3/gamma.sh off;
+set $exec_gamma exec ~/.config/i3/gamma.sh on;
+
 # toggle gaps
-bindsym $mod+g mode "gaps"
+bindsym $mod+g mode "gaps", $exec_gamma
 mode "gaps" {
-    bindsym 1 mode "default", gaps inner all set 6, exec --no-startup-id picom -b --config ~/.config/compton.conf --experimental-backends
-    bindsym 2 mode "default", gaps inner all set 0, exec --no-startup-id pkill picom
-    bindsym 3 mode "default", gaps inner all set 0
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym 1 $mode_def, gaps inner all set 6, exec --no-startup-id picom -b --config ~/.config/compton.conf --experimental-backends
+    bindsym 2 $mode_def, gaps inner all set 0, exec --no-startup-id pkill picom
+    bindsym 3 $mode_def, gaps inner all set 0
+    bindsym Return $mode_def
+    bindsym Escape $mode_def
 }
 
 # toggle gpu
-bindsym $mod+Shift+g mode "gpu"
+bindsym $mod+Shift+g mode "gpu", $exec_gamma
 mode "gpu" {
-	bindsym 1 mode "default", exec optimus-manager --switch intel --no-confirm
-	bindsym 2 mode "default", exec optimus-manager --switch hybrid --no-confirm
-	bindsym 3 mode "default", exec optimus-manager --switch nvidia --no-confirm
-	bindsym Return mode "default"
-    bindsym Escape mode "default"
+	bindsym 1 $mode_def, exec optimus-manager --switch intel --no-confirm
+	bindsym 2 $mode_def, exec optimus-manager --switch hybrid --no-confirm
+	bindsym 3 $mode_def, exec optimus-manager --switch nvidia --no-confirm
+	bindsym Return $mode_def
+    bindsym Escape $mode_def
 }
 
 # screenshot
@@ -78,6 +81,7 @@ bindsym $mod+Shift+n exec chromium --incognito
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show drun -modi window#run -config ~/.config/rofi/config
 bindsym $mod+c exec "rofi -show calc -modi calc -no-show-match -no-sort"
+bindsym $mod+Shift+grave exec "rofi -show emoji -modi emoji"
 
 # lock i3
 bindsym $mod+x exec "i3lockr --blur 200 -- --nofork --ignore-empty-password"
@@ -230,12 +234,12 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym Return $mode_def
+        bindsym Escape $mode_def
+        bindsym $mod+r $mode_def
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize", $exec_gamma
 
 # window colors
 #                       border              background         text                 indicator
@@ -257,7 +261,7 @@ exec "sleep 2 && discord"
 
 exec_always --no-startup-id autorandr -c
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/pink_flowers.jpg
 exec_always --no-startup-id picom -b --config ~/.config/compton.conf --experimental-backends
 exec_always --no-startup-id "xinput --set-prop 'Laview Technology Mionix Naos 7000' 'libinput Accel Speed' -.82"
 exec_always --no-startup-id fcitx -d
