@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 
+export JAVA_HOME=/usr/lib/jvm/default
+
 [[ $- != *i* ]] && return
 
 colors() {
@@ -92,11 +94,15 @@ unset use_color safe_term match_lhs sh
 
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
+alias du='du -h'
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
 alias ll="ls -alh"
 alias feh="feh --force-aliasing"
+alias swallow=i3-swallow
+alias evince="i3-swallow evince"
+alias sfeh="i3-swallow feh --force-aliasing"
 
 xhost +local:root > /dev/null 2>&1
 
