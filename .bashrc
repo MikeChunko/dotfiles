@@ -109,6 +109,7 @@ alias sfeh="i3-swallow feh --force-aliasing"
 alias clip="xclip -selection clipboard -t image/png -o >"
 alias watch="watch -cp"
 alias mem="cat /proc/meminfo | head -n2"
+export mem="cat /proc/meminfo | head -n2"
 
 xhost +local:root > /dev/null 2>&1
 
