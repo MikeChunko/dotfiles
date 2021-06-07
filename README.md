@@ -2,7 +2,7 @@
 Dotfiles for my Linux configuration
 
 OS: Manjaro Linux \
-Kernel: 5.8-tkg-pds \
+Kernel: 5.11-tkg-muqss \
 Shell: bash \
 WM: i3-gaps \
 Terminal: gnome-terminal-transparency \
