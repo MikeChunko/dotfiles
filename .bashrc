@@ -107,6 +107,8 @@ alias swallow=i3-swallow
 alias evince="i3-swallow evince"
 alias sfeh="i3-swallow feh --force-aliasing"
 alias clip="xclip -selection clipboard -t image/png -o >"
+alias watch="watch -cp"
+alias mem="cat /proc/meminfo | head -n2"
 
 xhost +local:root > /dev/null 2>&1
 
@@ -122,6 +124,9 @@ shopt -s expand_aliases
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
+
+# Don't save duplicate entries
+HISTCONTROL="erasedups:ignoreboth"
 
 #
 # # ex - archive extractor
