@@ -101,6 +101,7 @@ alias du='du -h'
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
+alias less="less -r"
 alias ll="ls -alh"
 alias feh="feh --force-aliasing"
 alias swallow=i3-swallow
@@ -109,7 +110,11 @@ alias sfeh="i3-swallow feh --force-aliasing"
 alias clip="xclip -selection clipboard -t image/png -o >"
 alias watch="watch -cp"
 alias mem="cat /proc/meminfo | head -n2"
-export mem="cat /proc/meminfo | head -n2"
+
+# Strip output to the nth line
+nth() {
+	sed -n "$1 p"
+}
 
 xhost +local:root > /dev/null 2>&1
 
