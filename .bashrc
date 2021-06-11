@@ -108,6 +108,9 @@ alias swallow=i3-swallow
 alias evince="i3-swallow evince"
 alias sfeh="i3-swallow feh --force-aliasing"
 alias clip="xclip -selection clipboard -t image/png -o >"
+alias mongod="mongod --dbpath ~/data/db"
+alias nano="nano -l"
+alias mpv="mpv --volume=50"
 alias watch="watch -cp"
 alias mem="cat /proc/meminfo | head -n2"
 
