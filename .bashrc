@@ -96,10 +96,10 @@ fi
 unset use_color safe_term match_lhs sh
 
 alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias du='du -h'
-alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
+alias df="df -h"                          # human-readable sizes
+alias du="du -h"
+alias free="free -m"                      # show sizes in MB
+alias np="nano -w PKGBUILD"
 alias more=less
 alias less="less -r"
 alias ll="ls -alh"
@@ -113,6 +113,7 @@ alias nano="nano -l"
 alias mpv="mpv --volume=50"
 alias watch="watch -cp"
 alias mem="cat /proc/meminfo | head -n2"
+alias bc="bc -l"
 
 # Strip output to the nth line
 nth() {
