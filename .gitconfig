@@ -3,6 +3,7 @@
 	email = chunkomike@gmail.com
 [core]
 	editor = micro
+	autocrlf = input
 [push]
 	default = simple
 [lfs]
@@ -14,5 +15,6 @@
 	required = true
 [color]
 	diff = always
+	ui = always
 [alias]
 	st = status -sb
