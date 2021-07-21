@@ -138,6 +138,10 @@ shopt -s histappend
 # Don't save duplicate entries
 HISTCONTROL="erasedups:ignoreboth"
 
+# Double the default history size (500)
+HISTSIZE=1000
+HISTFILESIZE=1000
+
 #
 # # ex - archive extractor
 # # usage: ex <file>
