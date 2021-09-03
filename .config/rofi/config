@@ -1,1 +1,3 @@
-rofi.theme: /usr/share/rofi/themes/sidetab-adapta.rasi
+configuration {
+	theme: "sidetab-adapta";
+}
