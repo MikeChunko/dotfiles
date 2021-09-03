@@ -65,11 +65,11 @@ mode "gpu" {
 }
 
 # screenshot
-bindsym $mod+s exec maim -u ~/Pictures/Screenshots/$(date +%F-%H-%M-%S).png
+bindsym $mod+s exec maim --hidecursor -u ~/Pictures/Screenshots/$(date +%F-%H-%M-%S).png
 # screenshot only active window
-bindsym $mod+Control+s exec maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%F-%H-%M-%S).png
+bindsym $mod+Control+s exec maim --hidecursor -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%F-%H-%M-%S).png
 #screenshot area and copy to clipboard
-bindsym $mod+Shift+s exec "maim -s | xclip -selection clipboard -t image/png"
+bindsym $mod+Shift+s exec "maim --hidecursor -s | xclip -selection clipboard -t image/png"
 
 # start nautilus
 bindsym $mod+backslash exec "nautilus --new-window"
@@ -79,7 +79,7 @@ bindsym $mod+n exec chromium
 bindsym $mod+Shift+n exec chromium --incognito
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show drun -modi window#run -config ~/.config/rofi/config
+bindsym $mod+d exec rofi -show drun -modi window#run -show-icons -config ~/.config/rofi/config
 bindsym $mod+c exec "rofi -show calc -modi calc -terse -no-show-match -no-sort"
 bindsym $mod+Shift+grave exec "rofi -show emoji -modi emoji"
 
