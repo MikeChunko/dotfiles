@@ -114,6 +114,7 @@ alias mpv="mpv --volume=50"
 alias watch="watch -cp"
 alias mem="cat /proc/meminfo | head -n2"
 alias bc="bc -lq"
+alias diff="colordiff -y"
 
 # Strip output to the nth line
 nth() {
