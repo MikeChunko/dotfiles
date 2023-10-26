@@ -1,0 +1,14 @@
+[{
+  "Name": "gofmt",
+  "Description": "gofmt support",
+  "Tags": ["go", "golang", "gofmt"],
+  "Versions": [
+    {
+      "Version": "0.0.1",
+      "Require": {
+        "micro": ">=2.0.0"
+      }
+    }
+  ]
+}]
+
