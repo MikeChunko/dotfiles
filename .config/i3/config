@@ -47,7 +47,7 @@ set $exec_gamma exec ~/.config/i3/gamma.sh on;
 # toggle gaps
 bindsym $mod+g mode "gaps", $exec_gamma
 mode "gaps" {
-    bindsym 1 $mode_def, gaps inner all set 5, exec --no-startup-id picom -b --config ~/.config/compton.conf --experimental-backends
+    bindsym 1 $mode_def, gaps inner all set 5, exec --no-startup-id picom -b --config ~/.config/compton.conf
     bindsym 2 $mode_def, gaps inner all set 0, exec --no-startup-id pkill picom
     bindsym 3 $mode_def, gaps inner all set 0
     bindsym Return $mode_def
@@ -262,7 +262,7 @@ exec "sleep 2 && discord"
 exec_always --no-startup-id autorandr -c
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/leaves.jpg
-exec_always --no-startup-id picom -b --config ~/.config/compton.conf --experimental-backends
+exec_always --no-startup-id picom -b --config ~/.config/compton.conf
 exec_always --no-startup-id "xinput --set-prop 'Laview Technology Mionix Naos 7000' 'libinput Accel Speed' -.82"
 exec_always --no-startup-id fcitx -d
 
