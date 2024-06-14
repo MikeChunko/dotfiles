@@ -110,11 +110,15 @@ alias sfeh="i3-swallow feh --force-aliasing"
 alias clip="xclip -selection clipboard -t image/png -o >"
 alias mongod="mongod --dbpath ~/data/db"
 alias nano="nano -lSWi"
-alias mpv="mpv --volume=50"
+alias mpv="i3-swallow mpv --volume=60 --no-border --save-position-on-quit"
 alias watch="watch -cp"
 alias mem="cat /proc/meminfo | head -n2"
 alias bc="bc -lq"
 alias diff="colordiff -y"
+alias plex="systemctl start plexmediaserver"
+alias network-applet="nm-applet"
+alias yay="paccache -rk3 && yay"
+alias proton="STEAM_COMPAT_CLIENT_INSTALL_PATH=~/.local/share/Steam/ STEAM_COMPAT_DATA_PATH=~/.proton/ ~/Games/Steam/Proton\ -\ Experimental/proton"
 
 # Strip output to the nth line
 nth() {
