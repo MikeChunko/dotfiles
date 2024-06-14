@@ -1,0 +1,14 @@
+[{
+  "Name": "pyfmt",
+  "Description": "pyfmt support",
+  "Tags": ["py", "python", "pyfmt"],
+  "Versions": [
+    {
+      "Version": "0.0.1",
+      "Require": {
+        "micro": ">=2.0.0"
+      }
+    }
+  ]
+}]
+
