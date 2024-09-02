@@ -69,13 +69,14 @@ bindsym $mod+s exec maim --hidecursor -u ~/Pictures/Screenshots/$(date +%F-%H-%M
 # screenshot only active window
 bindsym $mod+Control+s exec maim --hidecursor -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%F-%H-%M-%S).png
 #screenshot area and copy to clipboard
-bindsym $mod+Shift+s exec "maim --hidecursor -s | xclip -selection clipboard -t image/png"
+bindsym $mod+Shift+s exec "maim --hidecursor -s /home/mike/Pictures/tmp.png && echo 'file:///home/mike/Pictures/tmp.png' | xclip -selection clipboard -t text/uri-list"
+#bindsym $mod+Shift+s exec "maim --hidecursor -s | xclip -selection clipboard -t image/png"
 
 # start nautilus
 bindsym $mod+backslash exec "nautilus --new-window"
 
 # start chromium
-bindsym $mod+n exec chromium
+bindsym $mod+n exec "nice -n 19 chromium"
 bindsym $mod+Shift+n exec chromium --incognito
 
 # start rofi (a program launcher)
@@ -214,7 +215,9 @@ bindsym $mod+Shift+e exec bash ~/.config/i3/rofi-logout.sh
 
 # laptop brightness controls
 bindsym XF86MonBrightnessUp exec "light -A 10"
+bindsym $mod+Shift+Prior exec "light -A 10"
 bindsym XF86MonBrightnessDown exec "light -U 10"
+bindsym $mod+Shift+Next exec "light -U 10"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -263,14 +266,17 @@ exec_always --no-startup-id autorandr -c
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/leaves.jpg
 exec_always --no-startup-id picom -b --config ~/.config/compton.conf
-exec_always --no-startup-id "xinput --set-prop 'Laview Technology Mionix Naos 7000' 'libinput Accel Speed' -.82"
+exec_always --no-startup-id "xinput --set-prop 'Laview Technology Mionix Naos 7000' 'libinput Accel Speed' -.75"#-.82"
+exec_always --no-startup-id "xinput --set-prop 'MIONIX MIONIX NAOS PRO Gaming Mouse' 'libinput Accel Speed' -.65"
+exec_always --no-startup-id "xinput set-prop 'MIONIX MIONIX NAOS PRO Gaming Mouse' 'libinput Accel Profile Enabled' 0 1 0"
 exec_always --no-startup-id fcitx -d
 
 # XPS trackpad settings
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1"
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Natural Scrolling Enabled' 1"
 exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' 'libinput Disable While Typing Enabled' 0"
-exec_always --no-startup-id "sleep 3 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 40%"
+exec_always --no-startup-id "sleep 3 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 100%"
+exec_always --no-startup-id "sleep 3 && pactl set-sink-port 0 analog-output-headphones"
 #exec_always --no-startup-id "xinput --set-prop 'SYNA2393:00 06CB:7A13 Touchpad' ''
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
